@@ -1,0 +1,16 @@
+# Read the file line by line and extract phone numbers using a simpler approach given the simpler format
+newest_extracted_phone_numbers = []
+try:
+    with open(newest_file_path, 'r') as file:
+        next(file)  # Skip the first line of metadata
+        next(file)  # Skip the second line of metadata
+        next(file)  # Skip the empty line
+        next(file)  # Skip the header line
+        for line in file:
+            phone_number = line.split(',')[0].strip()  # Assuming the first item is the phone number
+            if phone_number.isdigit():  # Check if the extracted string is a number
+                newest_extracted_phone_numbers.append(phone_number)
+except Exception as e:
+    newest_extracted_phone_numbers = f"Failed to process {newest_file_path} due to {e}"
+
+newest_extracted_phone_numbers
