@@ -1,0 +1,21 @@
+import re
+
+# Function to extract phone numbers from a string using regex
+def extract_phone_numbers(s):
+    pattern = re.compile(r'\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b')
+    return pattern.findall(s)
+
+# Read the file line by line, extract phone numbers using the regex function
+extracted_phone_numbers = []
+try:
+    with open(new_file_path, 'r') as file:
+        next(file)  # Skip the first line of metadata
+        next(file)  # Skip the second line of metadata
+        next(file)  # Skip the empty line
+        for line in file:
+            phone_numbers = extract_phone_numbers(line)
+            extracted_phone_numbers.extend(phone_numbers)
+except Exception as e:
+    extracted_phone_numbers = f"Failed to process {new_file_path} due to {e}"
+
+extracted_phone_numbers
