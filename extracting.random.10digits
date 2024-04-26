@@ -1,0 +1,10 @@
+# Inspect the first few lines of the file to determine the correct format or delimiter
+lines = []
+try:
+    with open(new_file_path, 'r') as file:
+        for _ in range(10):  # Read the first 10 lines of the file
+            lines.append(file.readline().strip())
+except Exception as e:
+    lines = f"Failed to open {new_file_path} due to {e}"
+
+lines
